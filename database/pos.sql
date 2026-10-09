@@ -38,22 +38,21 @@ CREATE TABLE IF NOT EXISTS users (
 
 -- ============================================
 -- SAMPLE CUSTOMERS
--- Example data for development and testing
 -- ============================================
 
 INSERT INTO customers (full_name, email, phone) VALUES
 ('Aleson Axel D. De Pano',
- 'aleson.depano@example.com', '09171234006'),
+ 'aleson.depano@gmail.com', '09171234006'),
 ('Miguel Angelo Reyes',
- 'miguel.reyes@example.com', '09171234001'),
+ 'miguel.reyes@gmail.com', '09171234001'),
 ('Samantha Nicole Cruz',
- 'samantha.cruz@example.com', '09181234002'),
+ 'samantha.cruz@gmail.com', '09181234002'),
 ('Joshua Patrick Santos',
- 'joshua.santos@example.com', '09191234003'),
+ 'joshua.santos@gmail.com', '09191234003'),
 ('Andrea Mae Villanueva',
- 'andrea.villanueva@example.com', '09201234004'),
+ 'andrea.villanueva@gmail.com', '09201234004'),
 ('Gabriel Luis Mendoza',
- 'gabriel.mendoza@example.com', '09211234005');
+ 'gabriel.mendoza@gmail.com', '09211234005');
 
 -- ============================================
 -- SAMPLE USERS
@@ -61,21 +60,21 @@ INSERT INTO customers (full_name, email, phone) VALUES
 
 INSERT INTO users (username, full_name, email) VALUES
 ('aleson.depano',
- 'Aleson Axel D. De Pano', 'aleson.depano@example.com'),
+ 'Aleson Axel D. De Pano', 'aleson.depano@gmail.com'),
 ('miguel.reyes',
- 'Miguel Angelo Reyes', 'miguel.reyes@example.com'),
+ 'Miguel Angelo Reyes', 'miguel.reyes@gmail.com'),
 ('samantha.cruz',
- 'Samantha Nicole Cruz', 'samantha.cruz@example.com'),
+ 'Samantha Nicole Cruz', 'samantha.cruz@gmail.com'),
 ('joshua.santos',
- 'Joshua Patrick Santos', 'joshua.santos@example.com'),
+ 'Joshua Patrick Santos', 'joshua.santos@gmail.com'),
 ('andrea.villanueva',
- 'Andrea Mae Villanueva', 'andrea.villanueva@example.com'),
+ 'Andrea Mae Villanueva', 'andrea.villanueva@gmail.com'),
 ('gabriel.mendoza',
- 'Gabriel Luis Mendoza', 'gabriel.mendoza@example.com'),
+ 'Gabriel Luis Mendoza', 'gabriel.mendoza@gmail.com'),
 ('katrina.delosreyes',
- 'Katrina Marie Dela Cruz', 'katrina.delosreyes@example.com'),
+ 'Katrina Marie Dela Cruz', 'katrina.delosreyes@gmail.com'),
 ('daniel.bautista',
- 'Daniel Joseph Bautista', 'daniel.bautista@example.com');
+ 'Daniel Joseph Bautista', 'daniel.bautista@gmail.com');
 
 -- ============================================
 -- VIEW DATABASE RECORDS
