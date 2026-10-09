@@ -14,7 +14,7 @@
         <span class="eyebrow">How it works</span>
         <h2>A clear path from request to response.</h2>
         <p>Each browser URL is mapped to a controller through a route. The controller prepares the page data, then sends that data to a view that renders the final HTML.</p>
-        <p>The account records currently come from PHP arrays. A database-backed model can replace these arrays in a future module without changing the overall page structure.</p>
+        <p>The account records come from MySQL through CodeIgniter Models. The controllers pass the retrieved records to the views without changing the overall page structure.</p>
     </article>
     <aside class="info-card mvc-card">
         <span class="eyebrow">MVC flow</span>

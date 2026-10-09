@@ -1,14 +1,21 @@
 <?php
 
 use CodeIgniter\Test\CIUnitTestCase;
+use CodeIgniter\Test\DatabaseTestTrait;
 use CodeIgniter\Test\FeatureTestTrait;
+use App\Database\Seeds\PosSeeder;
 
 /**
  * @internal
  */
 final class PagesTest extends CIUnitTestCase
 {
+    use DatabaseTestTrait;
     use FeatureTestTrait;
+
+    protected $namespace = null;
+    protected $basePath  = APPPATH . 'Database';
+    protected $seed      = PosSeeder::class;
 
     public function testLandingPageLoads(): void
     {
@@ -26,7 +33,7 @@ final class PagesTest extends CIUnitTestCase
         $result->assertSee('MVC flow');
     }
 
-    public function testCustomerPageListsStaticRecords(): void
+    public function testCustomerPageListsDatabaseRecords(): void
     {
         $result = $this->get('/customers');
 
@@ -36,7 +43,7 @@ final class PagesTest extends CIUnitTestCase
         $result->assertSee('Sofia Mendoza');
     }
 
-    public function testUserPageListsStaticRecords(): void
+    public function testUserPageListsDatabaseRecords(): void
     {
         $result = $this->get('/users');
 

@@ -15,7 +15,7 @@
 <section class="container table-section">
     <div class="table-toolbar">
         <strong>Customer directory</strong>
-        <span>Static array &middot; Read only</span>
+        <span>MySQL database &middot; Read only</span>
     </div>
     <div class="table-card editorial-table"><div class="table-scroll">
         <table>

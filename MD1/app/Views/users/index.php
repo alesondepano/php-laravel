@@ -15,18 +15,18 @@
 <section class="container table-section">
     <div class="table-toolbar">
         <strong>Staff directory</strong>
-        <span>Static array &middot; Read only</span>
+        <span>MySQL database &middot; Read only</span>
     </div>
     <div class="table-card editorial-table"><div class="table-scroll">
         <table>
-            <thead><tr><th scope="col">#</th><th scope="col">Username</th><th scope="col">Full name</th><th scope="col">Role</th></tr></thead>
+            <thead><tr><th scope="col">#</th><th scope="col">Username</th><th scope="col">Full name</th><th scope="col">Created at</th></tr></thead>
             <tbody>
                 <?php foreach ($users as $index => $user): ?>
                     <tr>
                         <td class="row-number" data-label="Record"><span><?= str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) ?></span></td>
                         <td data-label="Username"><span class="username">@<?= esc($user['username']) ?></span></td>
                         <td data-label="Full name"><strong><?= esc($user['full_name']) ?></strong></td>
-                        <td data-label="Role"><span class="role-badge"><?= esc($user['role']) ?></span></td>
+                        <td data-label="Created at"><?= esc($user['created_at']) ?></td>
                     </tr>
                 <?php endforeach ?>
             </tbody>
