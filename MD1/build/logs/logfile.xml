@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="/Applications/XAMPP/xamppfiles/htdocs/php-laravel/MD1/phpunit.dist.xml" tests="9" assertions="19" errors="0" failures="0" skipped="0" time="0.037394">
+    <testsuite name="App" tests="9" assertions="19" errors="0" failures="0" skipped="0" time="0.037394">
+      <testsuite name="ExampleDatabaseTest" file="/Applications/XAMPP/xamppfiles/htdocs/php-laravel/MD1/tests/database/ExampleDatabaseTest.php" tests="2" assertions="3" errors="0" failures="0" skipped="0" time="0.018486">
+        <testcase name="testModelFindAll" file="/Applications/XAMPP/xamppfiles/htdocs/php-laravel/MD1/tests/database/ExampleDatabaseTest.php" line="17" class="ExampleDatabaseTest" classname="ExampleDatabaseTest" assertions="1" time="0.016838"/>
+        <testcase name="testSoftDeleteLeavesRow" file="/Applications/XAMPP/xamppfiles/htdocs/php-laravel/MD1/tests/database/ExampleDatabaseTest.php" line="28" class="ExampleDatabaseTest" classname="ExampleDatabaseTest" assertions="2" time="0.001648"/>
+      </testsuite>
+      <testsuite name="PagesTest" file="/Applications/XAMPP/xamppfiles/htdocs/php-laravel/MD1/tests/feature/PagesTest.php" tests="4" assertions="12" errors="0" failures="0" skipped="0" time="0.017431">
+        <testcase name="testWelcomePageListsOnlyTodayTasks" file="/Applications/XAMPP/xamppfiles/htdocs/php-laravel/MD1/tests/feature/PagesTest.php" line="20" class="PagesTest" classname="PagesTest" assertions="3" time="0.010464"/>
+        <testcase name="testTaskListPageListsEveryTask" file="/Applications/XAMPP/xamppfiles/htdocs/php-laravel/MD1/tests/feature/PagesTest.php" line="29" class="PagesTest" classname="PagesTest" assertions="4" time="0.002244"/>
+        <testcase name="testProfilePageDisplaysDemoUser" file="/Applications/XAMPP/xamppfiles/htdocs/php-laravel/MD1/tests/feature/PagesTest.php" line="39" class="PagesTest" classname="PagesTest" assertions="3" time="0.002528"/>
+        <testcase name="testAboutPageIdentifiesDeveloper" file="/Applications/XAMPP/xamppfiles/htdocs/php-laravel/MD1/tests/feature/PagesTest.php" line="48" class="PagesTest" classname="PagesTest" assertions="2" time="0.002195"/>
+      </testsuite>
+      <testsuite name="ExampleSessionTest" file="/Applications/XAMPP/xamppfiles/htdocs/php-laravel/MD1/tests/session/ExampleSessionTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000427">
+        <testcase name="testSessionSimple" file="/Applications/XAMPP/xamppfiles/htdocs/php-laravel/MD1/tests/session/ExampleSessionTest.php" line="10" class="ExampleSessionTest" classname="ExampleSessionTest" assertions="1" time="0.000427"/>
+      </testsuite>
+      <testsuite name="HealthTest" file="/Applications/XAMPP/xamppfiles/htdocs/php-laravel/MD1/tests/unit/HealthTest.php" tests="2" assertions="3" errors="0" failures="0" skipped="0" time="0.001049">
+        <testcase name="testIsDefinedAppPath" file="/Applications/XAMPP/xamppfiles/htdocs/php-laravel/MD1/tests/unit/HealthTest.php" line="12" class="HealthTest" classname="HealthTest" assertions="1" time="0.000197"/>
+        <testcase name="testBaseUrlHasBeenSet" file="/Applications/XAMPP/xamppfiles/htdocs/php-laravel/MD1/tests/unit/HealthTest.php" line="17" class="HealthTest" classname="HealthTest" assertions="2" time="0.000852"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>
