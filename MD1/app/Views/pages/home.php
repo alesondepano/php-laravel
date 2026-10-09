@@ -6,7 +6,7 @@
     <div class="hero-shade" aria-hidden="true"></div>
     <div class="container inner-copy directory-heading">
         <div>
-            <span class="eyebrow">Tasks for Today Management System</span>
+            <span class="eyebrow">AD System Management</span>
             <h1>Welcome <em>back.</em></h1>
             <p>Here are the tasks scheduled for <?= esc($today) ?>.</p>
         </div>

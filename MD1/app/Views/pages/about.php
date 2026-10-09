@@ -5,7 +5,7 @@
     <div class="container inner-copy">
         <span class="eyebrow">About the developer</span>
         <h1>Organized work.<br><em>Clear progress.</em></h1>
-        <p>Tasks for Today is a database-backed task-management system developed by Aleson Depano for IT0049 Web System Technologies.</p>
+        <p>AD System is a database-backed task-management system developed by Aleson Depano for IT0049 Web System Technologies.</p>
     </div>
 </section>
 

@@ -22,7 +22,7 @@ final class PagesTest extends CIUnitTestCase
         $result = $this->get('/');
 
         $result->assertOK();
-        $result->assertSee('Tasks for Today Management System');
+        $result->assertSee('AD System Management');
         $result->assertSee('Review morning sales report');
     }
 

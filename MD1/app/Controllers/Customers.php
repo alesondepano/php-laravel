@@ -10,11 +10,21 @@ class Customers extends BaseController
     public function index(): string
     {
         $customers = new CustomerModel();
+        $search = trim((string) $this->request->getGet('q'));
+
+        if ($search !== '') {
+            $customers->groupStart()
+                ->like('full_name', $search)
+                ->orLike('email', $search)
+                ->orLike('phone', $search)
+                ->groupEnd();
+        }
 
         return view('customers/index', [
             'title'     => 'Customer Accounts',
             'page'      => 'customers',
             'customers' => $customers->orderBy('id', 'DESC')->findAll(),
+            'search'    => $search,
         ]);
     }
 
@@ -26,6 +36,21 @@ class Customers extends BaseController
             'heading'    => 'New Customer',
             'customer'   => [],
             'formAction' => site_url('customers/create'),
+        ]);
+    }
+
+    public function view(int $id): string
+    {
+        $customer = (new CustomerModel())->find($id);
+
+        if ($customer === null) {
+            throw PageNotFoundException::forPageNotFound('Customer not found.');
+        }
+
+        return view('customers/view', [
+            'title'    => 'View Customer',
+            'page'     => 'customers',
+            'customer' => $customer,
         ]);
     }
 
@@ -55,7 +80,7 @@ class Customers extends BaseController
             'created_at' => date('Y-m-d H:i:s'),
         ]);
 
-        return redirect()->to(site_url('customers'));
+        return redirect()->to(site_url('customers'))->with('success', 'Customer created successfully.');
     }
 
     public function edit(int $id): string
@@ -107,6 +132,19 @@ class Customers extends BaseController
             'phone'     => trim((string) $this->request->getPost('phone')),
         ]);
 
-        return redirect()->to(site_url('customers'));
+        return redirect()->to(site_url('customers'))->with('success', 'Customer updated successfully.');
+    }
+
+    public function delete(int $id)
+    {
+        $model = new CustomerModel();
+
+        if ($model->find($id) === null) {
+            throw PageNotFoundException::forPageNotFound('Customer not found.');
+        }
+
+        $model->delete($id);
+
+        return redirect()->to(site_url('customers'))->with('success', 'Customer deleted successfully.');
     }
 }

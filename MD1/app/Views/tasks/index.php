@@ -8,19 +8,17 @@
             <h1>Task <em>List.</em></h1>
             <p>Every task in the system, ordered from the earliest date forward.</p>
         </div>
-        <span class="record-count"><?= count($tasks) ?> records</span>
+        <span class="record-count"><?= count($tasks) ?> <?= count($tasks) === 1 ? 'record' : 'records' ?></span>
     </div>
 </section>
 
 <section class="container table-section">
-    <div class="table-toolbar">
-        <strong>All tasks</strong>
-        <span>Ordered by task date</span>
-    </div>
+    <div class="table-toolbar"><strong>All tasks</strong><span>Ordered by task date</span></div>
     <div class="table-card editorial-table"><div class="table-scroll">
         <table class="table align-middle mb-0">
             <thead><tr><th scope="col">#</th><th scope="col">Task</th><th scope="col">Status</th><th scope="col">Task date</th></tr></thead>
             <tbody>
+                <?php if ($tasks === []): ?><tr><td colspan="4">No tasks found.</td></tr><?php endif ?>
                 <?php foreach ($tasks as $index => $task): ?>
                     <tr>
                         <td class="row-number" data-label="Record"><span><?= str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) ?></span></td>

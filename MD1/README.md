@@ -1,6 +1,6 @@
-# Tasks for Today Management System
+# AD System — Tasks for Today Management System
 
-Tasks for Today is a CodeIgniter 4 database-backed task-management system for IT0049 Web System Technologies.
+AD System is a CodeIgniter 4 database-backed task-management system for IT0049 Web System Technologies.
 
 ## Requirements
 
@@ -54,9 +54,13 @@ Tasks for Today is a CodeIgniter 4 database-backed task-management system for IT
 ## TFA3 forms and uploads
 
 - `/customers/new` creates a validated customer.
+- `/customers/view/{id}` displays one customer.
 - `/customers/edit/{id}` updates an existing customer.
+- `/customers/delete/{id}` deletes a customer through a protected POST form.
 - `/users/new` creates a validated user with a unique username.
+- `/users/view/{id}` displays one user and the prepared avatar.
 - `/users/edit/{id}` updates a user and accepts a JPG or PNG avatar up to 2MB.
+- `/users/delete/{id}` deletes a user and its stored avatar through a protected POST form.
 
 If you imported an older database export, add the new avatar column once in phpMyAdmin:
 

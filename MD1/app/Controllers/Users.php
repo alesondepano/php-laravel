@@ -10,11 +10,21 @@ class Users extends BaseController
     public function index(): string
     {
         $users = new UserModel();
+        $search = trim((string) $this->request->getGet('q'));
+
+        if ($search !== '') {
+            $users->groupStart()
+                ->like('username', $search)
+                ->orLike('full_name', $search)
+                ->orLike('email', $search)
+                ->groupEnd();
+        }
 
         return view('users/index', [
             'title' => 'User Accounts',
             'page'  => 'users',
-            'users' => $users->orderBy('id', 'DESC')->findAll(),
+            'users'  => $users->orderBy('id', 'DESC')->findAll(),
+            'search' => $search,
         ]);
     }
 
@@ -26,6 +36,21 @@ class Users extends BaseController
             'heading'    => 'New User',
             'user'       => [],
             'formAction' => site_url('users/create'),
+        ]);
+    }
+
+    public function view(int $id): string
+    {
+        $user = (new UserModel())->find($id);
+
+        if ($user === null) {
+            throw PageNotFoundException::forPageNotFound('User not found.');
+        }
+
+        return view('users/view', [
+            'title' => 'View User',
+            'page'  => 'users',
+            'user'  => $user,
         ]);
     }
 
@@ -61,7 +86,7 @@ class Users extends BaseController
             'created_at' => date('Y-m-d H:i:s'),
         ]);
 
-        return redirect()->to(site_url('users'));
+        return redirect()->to(site_url('users'))->with('success', 'User created successfully.');
     }
 
     public function edit(int $id): string
@@ -151,7 +176,29 @@ class Users extends BaseController
 
         $model->update($id, $data);
 
-        return redirect()->to(site_url('users'));
+        return redirect()->to(site_url('users'))->with('success', 'User updated successfully.');
+    }
+
+    public function delete(int $id)
+    {
+        $model = new UserModel();
+        $user = $model->find($id);
+
+        if ($user === null) {
+            throw PageNotFoundException::forPageNotFound('User not found.');
+        }
+
+        if (! empty($user['avatar'])) {
+            $avatarPath = FCPATH . 'uploads/avatars/' . basename($user['avatar']);
+
+            if (is_file($avatarPath)) {
+                unlink($avatarPath);
+            }
+        }
+
+        $model->delete($id);
+
+        return redirect()->to(site_url('users'))->with('success', 'User deleted successfully.');
     }
 
     private function userFormWithError(string $heading, array $user, string $formAction, string $field, string $message): string
