@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS users (
   id INT AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(50) NOT NULL UNIQUE,
   full_name VARCHAR(100) NOT NULL,
-  email VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
   avatar VARCHAR(255) NULL,
   created_at DATETIME NOT NULL
 );
@@ -21,13 +21,14 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS customers (
   id INT AUTO_INCREMENT PRIMARY KEY,
   full_name VARCHAR(100) NOT NULL,
-  email VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
   phone VARCHAR(20),
   created_at DATETIME NOT NULL
 );
 
 TRUNCATE TABLE tasks;
 TRUNCATE TABLE users;
+TRUNCATE TABLE customers;
 
 INSERT INTO tasks (title, status, task_date, created_at) VALUES
 ('Review morning sales report', 'completed', CURDATE(), NOW()),
@@ -40,11 +41,12 @@ INSERT INTO tasks (title, status, task_date, created_at) VALUES
 ('Review project documentation', 'pending', DATE_ADD(CURDATE(), INTERVAL 2 DAY), NOW());
 
 INSERT INTO users (username, full_name, email, created_at) VALUES
-('aleson.depano', 'Aleson Depano', 'aleson.depano@example.com', NOW());
+('aleson.depano', 'Aleson Axel D. De Pano', 'aleson.depano@gmail.com', NOW());
 
 INSERT INTO customers (full_name, email, phone, created_at) VALUES
-('Maria Santos', 'maria.santos@example.com', '0917 123 4567', NOW()),
-('John Reyes', 'john.reyes@example.com', '0918 234 5678', NOW()),
-('Angela Cruz', 'angela.cruz@example.com', '0919 345 6789', NOW()),
-('Paolo Garcia', 'paolo.garcia@example.com', '0920 456 7890', NOW()),
-('Sofia Mendoza', 'sofia.mendoza@example.com', '0921 567 8901', NOW());
+('Aleson Axel D. De Pano', 'aleson.depano@gmail.com', '09171234006', NOW()),
+('Miguel Angelo Reyes', 'miguel.reyes@gmail.com', '09171234001', NOW()),
+('Samantha Nicole Cruz', 'samantha.cruz@gmail.com', '09181234002', NOW()),
+('Joshua Patrick Santos', 'joshua.santos@gmail.com', '09191234003', NOW()),
+('Andrea Mae Villanueva', 'andrea.villanueva@gmail.com', '09201234004', NOW()),
+('Gabriel Luis Mendoza', 'gabriel.mendoza@gmail.com', '09211234005', NOW());

@@ -15,6 +15,7 @@ class TaskManagementSeeder extends Seeder
 
         $this->db->table('tasks')->truncate();
         $this->db->table('users')->truncate();
+        $this->db->table('customers')->truncate();
 
         $this->db->table('tasks')->insertBatch([
             ['title' => 'Review morning sales report', 'status' => 'completed', 'task_date' => $today, 'created_at' => $createdAt],
@@ -28,10 +29,16 @@ class TaskManagementSeeder extends Seeder
         ]);
 
         $this->db->table('users')->insert([
-            'username'  => 'aleson.depano',
-            'full_name' => 'Aleson Depano',
-            'email'     => 'aleson.depano@example.com',
-            'created_at' => $createdAt,
+            'username' => 'aleson.depano', 'full_name' => 'Aleson Axel D. De Pano', 'email' => 'aleson.depano@gmail.com', 'created_at' => $createdAt,
+        ]);
+
+        $this->db->table('customers')->insertBatch([
+            ['full_name' => 'Aleson Axel D. De Pano', 'email' => 'aleson.depano@gmail.com', 'phone' => '09171234006', 'created_at' => $createdAt],
+            ['full_name' => 'Miguel Angelo Reyes', 'email' => 'miguel.reyes@gmail.com', 'phone' => '09171234001', 'created_at' => $createdAt],
+            ['full_name' => 'Samantha Nicole Cruz', 'email' => 'samantha.cruz@gmail.com', 'phone' => '09181234002', 'created_at' => $createdAt],
+            ['full_name' => 'Joshua Patrick Santos', 'email' => 'joshua.santos@gmail.com', 'phone' => '09191234003', 'created_at' => $createdAt],
+            ['full_name' => 'Andrea Mae Villanueva', 'email' => 'andrea.villanueva@gmail.com', 'phone' => '09201234004', 'created_at' => $createdAt],
+            ['full_name' => 'Gabriel Luis Mendoza', 'email' => 'gabriel.mendoza@gmail.com', 'phone' => '09211234005', 'created_at' => $createdAt],
         ]);
     }
 }
