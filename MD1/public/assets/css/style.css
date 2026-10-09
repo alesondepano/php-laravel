@@ -46,6 +46,8 @@ h1, h2, h3 { margin-top: 0; color: var(--black); font-family: 'Manrope', sans-se
 .button:hover { transform: translateY(-2px); }
 .button.primary { color: var(--black); background: var(--yellow); }
 .button.secondary { color: var(--white); border-color: #555; background: rgba(0, 0, 0, .25); }
+.small-button { min-height: 38px; padding: 0 14px; color: var(--black); background: var(--yellow); font-size: .72rem; }
+.light-button { color: var(--text); border-color: var(--border); background: var(--white); }
 
 .features { padding: 80px 0 95px; }
 .section-heading { max-width: 650px; margin-bottom: 35px; }
@@ -60,6 +62,9 @@ h1, h2, h3 { margin-top: 0; color: var(--black); font-family: 'Manrope', sans-se
 .feature-card a { color: #8c6800; font-size: .88rem; font-weight: 700; text-decoration: none; }
 
 .inner-hero { color: var(--white); background: var(--black); }
+.dashboard-hero { position: relative; overflow: hidden; isolation: isolate; }
+.dashboard-hero .hero-photo { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.dashboard-hero .hero-shade { position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, rgba(0, 0, 0, .95) 0%, rgba(0, 0, 0, .78) 42%, rgba(0, 0, 0, .14) 100%); }
 .inner-copy { padding: 78px 0; }
 .inner-copy h1 { max-width: 850px; margin-bottom: 18px; color: var(--white); font-size: clamp(2.8rem, 6vw, 4.7rem); letter-spacing: -.05em; }
 .inner-copy > p, .directory-heading p { max-width: 620px; margin: 0; color: #bbb; }
@@ -92,6 +97,27 @@ td a { color: #8c6800; text-decoration: none; }
 .row-number span { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 4px; color: #5b4500; background: var(--yellow-soft); font-size: .72rem; font-weight: 800; }
 .username { color: #8c6800; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .88rem; }
 .role-badge { display: inline-block; padding: 6px 10px; border-radius: 4px; color: #5b4500; background: var(--yellow-soft); font-size: .78rem; font-weight: 700; }
+.task-status { display: inline-block; padding: 6px 10px; border-radius: 4px; color: #5b4500; background: var(--yellow-soft); font-size: .78rem; font-weight: 700; }
+.status-completed { color: #1b6b43; background: #e2f5e9; }
+.status-in-progress { color: #785000; background: #fff0bd; }
+.status-pending { color: #6a6a6a; background: #eeeeeb; }
+.profile-details { display: grid; gap: 0; margin: 28px 0 0; }
+.profile-details div { display: flex; justify-content: space-between; gap: 20px; padding: 15px 0; border-bottom: 1px solid var(--border); }
+.profile-details dt { color: var(--muted); font-size: .78rem; font-weight: 700; text-transform: uppercase; }
+.profile-details dd { margin: 0; text-align: right; }
+.profile-details a { color: #8c6800; text-decoration: none; }
+.avatar-thumb { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; vertical-align: middle; }
+.edit-link { color: #8c6800; font-weight: 700; text-decoration: none; }
+.form-section { padding: 60px 0 90px; }
+.form-card { max-width: 680px; margin: 0 auto; padding: 38px; border: 1px solid var(--border); border-radius: 10px; background: var(--white); box-shadow: var(--shadow); }
+.form-card form { display: grid; gap: 10px; }
+.form-card label { margin-top: 10px; color: var(--text); font-size: .78rem; font-weight: 700; }
+.form-card input { width: 100%; padding: 13px 14px; border: 1px solid #d6d2c8; border-radius: 5px; color: var(--text); background: #fff; font: inherit; }
+.form-card input:focus { outline: 3px solid var(--yellow-soft); border-color: #b58500; }
+.form-actions { display: flex; gap: 12px; margin-top: 22px; }
+.form-errors { margin-bottom: 18px; padding: 14px 17px; border: 1px solid #e9b8b8; border-radius: 5px; color: #8e2020; background: #fff0f0; }
+.form-errors ul { margin: 0; padding-left: 20px; }
+.form-help { margin-top: -2px; color: var(--muted); font-size: .78rem; }
 
 footer { color: #929292; background: #050505; border-top: 1px solid rgba(255, 204, 0, .2); }
 .footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding: 18px 0; border-top: 1px solid #222; color: #555; font-size: .65rem; letter-spacing: .08em; text-transform: uppercase; }

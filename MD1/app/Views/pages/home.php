@@ -1,47 +1,42 @@
 <?= $this->extend('layouts/main') ?>
 
 <?= $this->section('content') ?>
-<section class="hero">
-    <img class="hero-photo" src="<?= base_url('assets/images/ad-system-hero.png') ?>" alt="Modern retail checkout counter with a tablet, receipt printer, and barcode scanner">
+<section class="inner-hero dashboard-hero">
+    <img class="hero-photo" src="<?= base_url('assets/images/ad-system-hero.png') ?>" alt="Organized workspace for managing daily tasks">
     <div class="hero-shade" aria-hidden="true"></div>
-    <div class="container hero-grid">
-        <div class="hero-content">
-            <span class="eyebrow">AD System Management</span>
-            <h1>Smart accounts.<br><em>Better business.</em></h1>
-            <p class="hero-copy">A focused workspace for organizing the people behind every transaction—your customers and your team.</p>
-            <div class="actions">
-                <a class="button primary" href="<?= site_url('customers') ?>">Explore customers <span aria-hidden="true">&rarr;</span></a>
-                <a class="button secondary" href="<?= site_url('users') ?>">Meet the team</a>
-            </div>
+    <div class="container inner-copy directory-heading">
+        <div>
+            <span class="eyebrow">Tasks for Today Management System</span>
+            <h1>Welcome <em>back.</em></h1>
+            <p>Here are the tasks scheduled for <?= esc($today) ?>.</p>
         </div>
+        <span class="record-count"><?= $todayCount ?> today</span>
     </div>
 </section>
 
-<section class="container features">
-    <div class="section-heading">
-        <span class="eyebrow">Explore AD System</span>
-        <h2>Everything in one simple place.</h2>
-        <p>Browse customer and staff records or learn how the project uses MVC architecture.</p>
+<section class="container table-section">
+    <div class="table-toolbar">
+        <strong>Today's tasks</strong>
+        <span>Filtered by task date</span>
     </div>
-    <div class="card-grid">
-        <article class="feature-card">
-            <span class="card-number">01</span>
-            <h3>Customer Accounts</h3>
-            <p>Review customer names, email addresses, and phone numbers in one organized list.</p>
-            <a href="<?= site_url('customers') ?>">Open customers <span aria-hidden="true">&rarr;</span></a>
-        </article>
-        <article class="feature-card">
-            <span class="card-number">02</span>
-            <h3>User Accounts</h3>
-            <p>See staff usernames, full names, and assigned roles for daily operations.</p>
-            <a href="<?= site_url('users') ?>">Open users <span aria-hidden="true">&rarr;</span></a>
-        </article>
-        <article class="feature-card">
-            <span class="card-number">03</span>
-            <h3>About the Project</h3>
-            <p>Learn how routes, controllers, and views work together in CodeIgniter.</p>
-            <a href="<?= site_url('about') ?>">Learn more <span aria-hidden="true">&rarr;</span></a>
-        </article>
-    </div>
+    <div class="table-card editorial-table"><div class="table-scroll">
+        <table class="table align-middle mb-0">
+            <thead><tr><th scope="col">#</th><th scope="col">Task</th><th scope="col">Status</th><th scope="col">Date</th></tr></thead>
+            <tbody>
+                <?php if ($tasks === []): ?>
+                    <tr><td colspan="4">No tasks are scheduled for today.</td></tr>
+                <?php else: ?>
+                    <?php foreach ($tasks as $index => $task): ?>
+                        <tr>
+                            <td class="row-number" data-label="Record"><span><?= str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) ?></span></td>
+                            <td data-label="Task"><strong><?= esc($task['title']) ?></strong></td>
+                            <td data-label="Status"><span class="task-status status-<?= esc(str_replace(' ', '-', $task['status']), 'attr') ?>"><?= esc(ucwords($task['status'])) ?></span></td>
+                            <td data-label="Date"><?= esc($task['task_date']) ?></td>
+                        </tr>
+                    <?php endforeach ?>
+                <?php endif ?>
+            </tbody>
+        </table>
+    </div></div>
 </section>
 <?= $this->endSection() ?>

@@ -1,9 +1,9 @@
 <?php
 
+use App\Database\Seeds\TaskManagementSeeder;
 use CodeIgniter\Test\CIUnitTestCase;
 use CodeIgniter\Test\DatabaseTestTrait;
 use CodeIgniter\Test\FeatureTestTrait;
-use App\Database\Seeds\PosSeeder;
 
 /**
  * @internal
@@ -15,42 +15,41 @@ final class PagesTest extends CIUnitTestCase
 
     protected $namespace = null;
     protected $basePath  = APPPATH . 'Database';
-    protected $seed      = PosSeeder::class;
+    protected $seed      = TaskManagementSeeder::class;
 
-    public function testLandingPageLoads(): void
+    public function testWelcomePageListsOnlyTodayTasks(): void
     {
         $result = $this->get('/');
 
         $result->assertOK();
-        $result->assertSee('Smart accounts');
+        $result->assertSee('Tasks for Today Management System');
+        $result->assertSee('Review morning sales report');
     }
 
-    public function testAboutPageLoads(): void
+    public function testTaskListPageListsEveryTask(): void
+    {
+        $result = $this->get('/tasks');
+
+        $result->assertOK();
+        $result->assertSee('Task List');
+        $result->assertSee('Review project documentation');
+        $result->assertSee('Archive last week invoices');
+    }
+
+    public function testProfilePageDisplaysDemoUser(): void
+    {
+        $result = $this->get('/profile');
+
+        $result->assertOK();
+        $result->assertSee('Aleson Depano');
+        $result->assertSee('aleson.depano@example.com');
+    }
+
+    public function testAboutPageIdentifiesDeveloper(): void
     {
         $result = $this->get('/about');
 
         $result->assertOK();
-        $result->assertSee('MVC flow');
-    }
-
-    public function testCustomerPageListsDatabaseRecords(): void
-    {
-        $result = $this->get('/customers');
-
-        $result->assertOK();
-        $result->assertSee('Customer Accounts');
-        $result->assertSee('Maria Santos');
-        $result->assertSee('Sofia Mendoza');
-    }
-
-    public function testUserPageListsDatabaseRecords(): void
-    {
-        $result = $this->get('/users');
-
-        $result->assertOK();
-        $result->assertSee('User Accounts');
         $result->assertSee('Aleson Depano');
-        $result->assertSee('Agapito');
-        $result->assertSee('Nicole Garcia');
     }
 }

@@ -15,11 +15,11 @@
 <section class="container table-section">
     <div class="table-toolbar">
         <strong>Customer directory</strong>
-        <span>MySQL database &middot; Read only</span>
+        <a class="button small-button btn btn-warning" href="<?= site_url('customers/new') ?>">Add customer <span aria-hidden="true">+</span></a>
     </div>
     <div class="table-card editorial-table"><div class="table-scroll">
-        <table>
-            <thead><tr><th scope="col">#</th><th scope="col">Full name</th><th scope="col">Email address</th><th scope="col">Phone number</th></tr></thead>
+        <table class="table align-middle mb-0">
+            <thead><tr><th scope="col">#</th><th scope="col">Full name</th><th scope="col">Email address</th><th scope="col">Phone number</th><th scope="col">Action</th></tr></thead>
             <tbody>
                 <?php foreach ($customers as $index => $customer): ?>
                     <tr>
@@ -27,6 +27,7 @@
                         <td data-label="Full name"><strong><?= esc($customer['full_name']) ?></strong></td>
                         <td data-label="Email"><a href="mailto:<?= esc($customer['email'], 'attr') ?>"><?= esc($customer['email']) ?></a></td>
                         <td data-label="Phone"><?= esc($customer['phone']) ?></td>
+                        <td data-label="Action"><a class="edit-link" href="<?= site_url('customers/edit/' . $customer['id']) ?>">Edit</a></td>
                     </tr>
                 <?php endforeach ?>
             </tbody>

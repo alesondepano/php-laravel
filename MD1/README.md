@@ -1,6 +1,6 @@
-# AD System
+# Tasks for Today Management System
 
-AD System is a four-page Point-of-Sale demonstration built with CodeIgniter 4. The customer and user directories use MySQL tables and CodeIgniter Models to retrieve records with Query Builder.
+Tasks for Today is a CodeIgniter 4 database-backed task-management system for IT0049 Web System Technologies.
 
 ## Requirements
 
@@ -11,31 +11,16 @@ AD System is a four-page Point-of-Sale demonstration built with CodeIgniter 4. T
 
 ## Setup
 
-1. Install dependencies:
-
-   ```bash
-   composer install
-   ```
-
-2. Start MySQL and confirm the credentials in `.env`. The default local configuration is:
-
-   ```ini
-   database.default.hostname = localhost
-   database.default.database = ad_system
-   database.default.username = root
-   database.default.password =
-   database.default.DBDriver = MySQLi
-   database.default.port = 3306
-   ```
-
-3. Create the `ad_system` database in phpMyAdmin or MySQL first. Then create the tables and sample records with either option:
+1. Start MySQL and confirm the database settings in `.env`.
+2. Create the `ad_system` database in phpMyAdmin, or import `database/tasks.sql`.
+3. Run the migrations and task-management seeder:
 
    ```bash
    php spark migrate
-   php spark db:seed PosSeeder
+   php spark db:seed TaskManagementSeeder
    ```
 
-   Or import [`database/pos.sql`](database/pos.sql) into MySQL.
+   The seeder creates 8 tasks across 4 dates, including today, and exactly one demo user.
 
 4. Start the application:
 
@@ -43,33 +28,46 @@ AD System is a four-page Point-of-Sale demonstration built with CodeIgniter 4. T
    php spark serve
    ```
 
-5. Open `http://127.0.0.1:8080/`.
+5. Open the URL shown in the terminal, for example `http://localhost:8080/`.
 
-## Routes
+## Required pages
 
 | Route | Purpose |
 | --- | --- |
-| `/` | Landing page |
-| `/about` | Project information |
-| `/customers` | Customer Accounts loaded by `CustomerModel` |
-| `/users` | User Accounts loaded by `UserModel` |
+| `/` | Welcome dashboard showing only tasks scheduled for today |
+| `/tasks` | Complete task list ordered by task date |
+| `/profile` | Single demo user profile loaded through `UserModel` |
+| `/about` | Static developer and system information |
 
 ## Project structure
 
-- `app/Config/Routes.php` contains the four routes.
-- `app/Controllers/` prepares page data.
-- `app/Models/CustomerModel.php` and `app/Models/UserModel.php` access the database tables.
-- `app/Database/Migrations/` creates the `customers` and `users` tables.
-- `app/Database/Seeds/PosSeeder.php` inserts sample records.
-- `app/Views/` contains the shared layout and page views.
-- `database/pos.sql` is the database export required for submission.
+- `app/Models/TaskModel.php` contains the date-filtered and ordered queries.
+- `app/Models/UserModel.php` accesses the demo user record.
+- `app/Controllers/Pages.php` prepares the Welcome and About pages.
+- `app/Controllers/Tasks.php` prepares the full Task List page.
+- `app/Controllers/Profile.php` prepares the Profile page.
+- `app/Database/Migrations/` creates the task schema and adds `users.email` when upgrading the previous project.
+- `app/Database/Seeds/TaskManagementSeeder.php` inserts the required sample data.
+- `database/tasks.sql` is the database export for submission.
+- `public/uploads/avatars/` stores prepared user avatar thumbnails; only the filename is saved in the database.
+
+## TFA3 forms and uploads
+
+- `/customers/new` creates a validated customer.
+- `/customers/edit/{id}` updates an existing customer.
+- `/users/new` creates a validated user with a unique username.
+- `/users/edit/{id}` updates a user and accepts a JPG or PNG avatar up to 2MB.
+
+If you imported an older database export, add the new avatar column once in phpMyAdmin:
+
+```sql
+ALTER TABLE users ADD COLUMN avatar VARCHAR(255) NULL;
+```
 
 ## Verification
 
-Run the automated tests with:
+Run the tests with:
 
 ```bash
-composer test
+vendor/bin/phpunit --no-coverage
 ```
-
-The test suite uses an isolated SQLite database and verifies that both directory pages retrieve and display seeded records through their Models.
